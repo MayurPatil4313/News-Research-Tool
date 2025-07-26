@@ -34,27 +34,21 @@ llm = ChatGroq(
 )
 
 
-st.markdown("""
-    <style>
-    /* Hide the collapse button */
-    [data-testid="collapsedControl"] {
-        display: none;
-    }
-    </style>
-""", unsafe_allow_html=True)
+# url_inputs = []
+# for i in range(2):
+#     url = st.sidebar.text_input(f"URL {i+1}", placeholder="Enter URL")
+#     url_inputs.append(url)
 
-url_inputs = []
-for i in range(2):
-    url = st.sidebar.text_input(f"URL {i+1}", placeholder="Enter URL")
-    url_inputs.append(url)
 
+url = st.text_input(f"URL ", placeholder="Enter URL")
 process_urls_clicked = st.sidebar.button("Process URLs")
 
 if process_urls_clicked:
 
-    if len(url_inputs[0]) or len(url_inputs[1]) != 0:
+    # if len(url_inputs[0]) or len(url_inputs[1]) != 0:
+    if len(url) != 0:
         # load the data
-        loader = UnstructuredURLLoader(urls=url_inputs)
+        loader = UnstructuredURLLoader(urls=url)
         main_placeholder.text("Data Loading started......")
         data = loader.load()
 
