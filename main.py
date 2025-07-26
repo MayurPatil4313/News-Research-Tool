@@ -51,6 +51,10 @@ if process_urls_clicked:
         main_placeholder.text("Data Loading started......")
         data = loader.load()
 
+        if not data:
+            st.error("Failed to load data from the URL. Please check the link.")
+            st.stop()
+
         # split the data
         text_splitter = RecursiveCharacterTextSplitter(
             separators=["\n\n", "\n", " ", "."], chunk_size=1000, chunk_overlap=200
@@ -59,17 +63,21 @@ if process_urls_clicked:
         main_placeholder.text("Data Splitting.....")
         docs = text_splitter.split_documents(data)
 
-        # create embedding
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        main_placeholder.text("Data Embedding......")
+        if not docs:
+            st.error("No content could be extracted from the URL.")
+        else:
 
-        vectorindex = FAISS.from_documents(documents=docs, embedding=embeddings)
+            # create embedding
+            embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+            main_placeholder.text("Data Embedding......")
 
-        main_placeholder.text("Data Embedding Done ✅✅✅")
+            vectorindex = FAISS.from_documents(documents=docs, embedding=embeddings)
 
-        # storing FASSI index into pickle format
-        with open(file_path, "wb") as f:
-            pickle.dump(vectorindex, f)
+            main_placeholder.text("Data Embedding Done ✅✅✅")
+
+            # storing FASSI index into pickle format
+            with open(file_path, "wb") as f:
+                pickle.dump(vectorindex, f)
 
     else:
         st.error("Provide the URLs First")
