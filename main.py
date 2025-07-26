@@ -46,11 +46,8 @@ if process_urls_clicked:
 
     # if len(url_inputs[0]) or len(url_inputs[1]) != 0:
     if len(url) != 0:
-
-        print('url ===============================================' , url)
-        print('url ===============================================' , type(url))
         # load the data
-        loader = UnstructuredURLLoader(urls=url)
+        loader = UnstructuredURLLoader(urls=[url])
         main_placeholder.text("Data Loading started......")
         data = loader.load()
 
