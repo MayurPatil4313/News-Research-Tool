@@ -21,7 +21,7 @@ API_KEY = os.getenv("API_KEY")
 
 st.title("News Research Tool  📈")
 
-st.sidebar.title("News Article URLs ")
+st.subheader("News Article URLs ")
 
 file_path = "faiss_store_vector_index.pkl"
 
@@ -41,7 +41,7 @@ llm = ChatGroq(
 
 
 url = st.text_input(f"URL ", placeholder="Enter URL")
-process_urls_clicked = st.sidebar.button("Process URLs")
+process_urls_clicked = st.button("Process URLs")
 
 if process_urls_clicked:
 
