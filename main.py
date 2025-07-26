@@ -33,6 +33,16 @@ llm = ChatGroq(
     groq_api_key=API_KEY
 )
 
+
+st.markdown("""
+    <style>
+    /* Hide the collapse button */
+    [data-testid="collapsedControl"] {
+        display: none;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 url_inputs = []
 for i in range(2):
     url = st.sidebar.text_input(f"URL {i+1}", placeholder="Enter URL")
