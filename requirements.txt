@@ -8,4 +8,4 @@ huggingface-hub
 transformers
 unstructured
 tqdm
-
+sentence-transformers
