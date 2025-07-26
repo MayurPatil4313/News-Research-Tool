@@ -88,7 +88,7 @@ if st.button("Search 🔍"):
 
                 result = chain({'question':query} ,return_only_outputs=True)
                 st.header("╰┈➤")
-                st.write(result['answer'].split(':')[1])
+                st.write(result['answer'])
 
                 # display source 
                 sources = result.get('sources' , '')
