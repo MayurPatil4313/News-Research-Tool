@@ -1,0 +1,4 @@
+build-essential
+libgl1
+poppler-utils
+libmagic-dev
