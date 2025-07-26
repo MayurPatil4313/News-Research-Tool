@@ -78,7 +78,7 @@ if process_urls_clicked:
 query = st.text_input("Question:🔍", placeholder="Enter Your query")
 
 if st.button("Search 🔍"):
-    print(query)
+    # print(query)
     if query  and len(url) != 0:
         if os.path.exists(file_path):
             with open(file_path, "rb") as f:
@@ -103,5 +103,7 @@ if st.button("Search 🔍"):
                     for source in source_list:
                         st.write(source)
 
-    else:
+    elif len(query) == 0:
         st.error("Provide the Question First")
+    elif len(url) == 0:
+        st.error("Provide the URL First")
