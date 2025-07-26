@@ -21,7 +21,6 @@ API_KEY = os.getenv("API_KEY")
 
 st.title("News Research Tool  📈")
 
-st.subheader("News Article URLs ")
 
 file_path = "faiss_store_vector_index.pkl"
 
@@ -80,7 +79,7 @@ query = st.text_input("Question:🔍", placeholder="Enter Your query")
 
 if st.button("Search 🔍"):
     print(query)
-    if query:
+    if query  and len(url) != 0:
         if os.path.exists(file_path):
             with open(file_path, "rb") as f:
                 vectorindex = pickle.load(f)
