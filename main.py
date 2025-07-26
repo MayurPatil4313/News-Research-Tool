@@ -110,7 +110,8 @@ if st.button("Search 🔍"):
 
                     for source in source_list:
                         st.write(source)
-
+                else: 
+                    st.write("no sourse")
     elif len(query) == 0:
         st.error("Provide the Question First")
     elif len(url) == 0:
