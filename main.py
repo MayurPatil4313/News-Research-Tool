@@ -47,7 +47,7 @@ if process_urls_clicked:
     # if len(url_inputs[0]) or len(url_inputs[1]) != 0:
     if len(url) != 0:
         # load the data
-        loader = UnstructuredURLLoader(urls=[url])
+        loader = UnstructuredURLLoader(urls=[   ])
         main_placeholder.text("Data Loading started......")
         data = loader.load()
 
@@ -76,7 +76,7 @@ if process_urls_clicked:
             main_placeholder.text("Data Embedding Done ✅✅✅")
 
             # storing FASSI index into pickle format
-            with open(file_path, "wb") as f:
+            with open(file_path, "wb+") as f:
                 pickle.dump(vectorindex, f)
 
     else:
@@ -89,7 +89,7 @@ if st.button("Search 🔍"):
     # print(query)
     if query  and len(url) != 0:
         if os.path.exists(file_path):
-            with open(file_path, "rb") as f:
+            with open(file_path, "rb+") as f:
                 vectorindex = pickle.load(f)
 
                 # create a QA chain
